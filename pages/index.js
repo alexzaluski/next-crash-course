@@ -18,9 +18,7 @@ export default function Home({ posts }) {
 
 // Fetch data at build time
 export const getStaticProps = async () => {
-  const res = await fetch(
-    'https://jsonplaceholder.typicode.com/posts?_limit=6'
-  );
+  const res = await fetch(`http:/localhost:3000/api/posts`);
   const data = await res.json();
 
   return {
@@ -29,3 +27,17 @@ export const getStaticProps = async () => {
     },
   };
 };
+
+// // Fetch data at build time
+// export const getStaticProps = async () => {
+//   const res = await fetch(
+//     'https://jsonplaceholder.typicode.com/posts?_limit=6'
+//   );
+//   const data = await res.json();
+
+//   return {
+//     props: {
+//       posts: data,
+//     },
+//   };
+// };
