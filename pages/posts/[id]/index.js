@@ -1,3 +1,4 @@
+import { server } from '../../../config';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -24,9 +25,7 @@ const postDetails = ({ post }) => {
  * or admin dashboard stats where data updates frequently.
  */
 // export const getServerSideProps = async (context) => {
-//   const res = await fetch(
-//     `https://jsonplaceholder.typicode.com/posts/${context.params.id}`
-//   );
+//   const res = await fetch(`${server}/api/posts`);
 //   const data = await res.json();
 //   return {
 //     props: {
@@ -43,9 +42,7 @@ const postDetails = ({ post }) => {
  * or the author’s bio, which don’t change frequently and can be cached for performance.
  */
 export const getStaticProps = async ({ params }) => {
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${params.id}`
-  );
+  const res = await fetch(`${server}/api/posts/${params.id}`);
   const data = await res.json();
   return {
     props: { post: data },
@@ -60,7 +57,7 @@ export const getStaticProps = async ({ params }) => {
  * defining available post IDs so each page is generated ahead of time.
  */
 export const getStaticPaths = async () => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const res = await fetch(`${server}/api/posts`);
   const data = await res.json();
 
   const paths = data.map((post) => ({
