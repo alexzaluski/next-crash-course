@@ -1,3 +1,4 @@
+import { server } from '../config/index';
 import Head from 'next/head';
 import Image from 'next/image';
 import PostList from '../components/PostList';
@@ -18,7 +19,7 @@ export default function Home({ posts }) {
 
 // Fetch data at build time
 export const getStaticProps = async () => {
-  const res = await fetch(`http:/localhost:3000/api/posts`);
+  const res = await fetch(`${server}/api/posts`);
   const data = await res.json();
 
   return {
