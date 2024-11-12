@@ -1,17 +1,9 @@
 import { server } from '../config/index';
-import Head from 'next/head';
-import Image from 'next/image';
 import PostList from '../components/PostList';
 
 export default function Home({ posts }) {
   return (
     <div>
-      <Head>
-        <title>WebDev Newz</title>
-        <meta name="keywords" content="web development, programming" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <PostList posts={posts} />
     </div>
   );

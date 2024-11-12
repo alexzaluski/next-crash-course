@@ -1,6 +1,7 @@
 import { server } from '../../../config';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
+import Meta from '../../../components/Meta';
 
 const postDetails = ({ post }) => {
   // const router = useRouter();
@@ -9,6 +10,7 @@ const postDetails = ({ post }) => {
 
   return (
     <>
+      <Meta title={post.title} description={post.excerpt} />
       <h1>{post.title}</h1>
       <p>{post.body}</p>
       <br />
